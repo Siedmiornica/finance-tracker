@@ -6,7 +6,7 @@ import AuthGuard from './components/AuthGuard';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/finance-tracker">
       <Routes>
         <Route path="/" element={<PublicPage />} />
         <Route path="/login" element={<LoginPage />} />
