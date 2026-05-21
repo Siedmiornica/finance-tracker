@@ -32,6 +32,17 @@ npm run build
 npm run preview
 ```
 
+## Logowanie (panel admina)
+
+Domyślne dane logowania:
+
+| Pole   | Wartość    |
+|--------|------------|
+| Login  | `admin`    |
+| Hasło  | `admin123` |
+
+Przejdź na `/login` lub kliknij link do panelu admina. Dane są inicjalizowane automatycznie przy pierwszym uruchomieniu (localStorage).
+
 ## Struktura
 
 ```
