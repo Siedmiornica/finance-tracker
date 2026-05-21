@@ -1,54 +1,59 @@
-// Item as stored in DB
-export interface Item {
-  id: number;
-  description: string;
-  purchasePrice: number; // stored as integer cents
-  purchaseDate: string; // ISO date string YYYY-MM-DD
-  salePrice: number | null; // stored as integer cents, null if active
-  saleDate: string | null; // ISO date string, null if active
-  folderId: number | null;
-  createdAt: string;
-  updatedAt: string;
-}
-
-// Computed fields for display
-export interface ItemWithProfit extends Item {
-  status: "active" | "sold";
-  profitAmount: number | null; // cents, null if active
-  profitPercentage: number | null; // percentage, null if active or purchasePrice=0
-}
-
-// Folder
-export interface Folder {
-  id: number;
-  name: string;
-  createdAt: string;
-}
-
-// Summary
-export interface Summary {
-  totalProfit: number; // sum of all sold item profits (cents)
-  totalActiveValue: number; // sum of all active item purchase prices (cents)
-  soldCount: number;
-  activeCount: number;
-}
-
-// Validation
-export interface ValidationResult {
-  valid: boolean;
-  errors: Record<string, string>; // field -> error message
-}
-
-// Item creation input
-export interface CreateItemInput {
-  description: string;
-  purchasePrice: number; // user enters decimal, we convert to cents
+export interface Transaction {
+  id: string;
+  number: number;
+  title: string;
+  description?: string;
+  category?: string;
+  status: 'Kupiono' | 'Sprzedano';
+  purchasePrice: number;
   purchaseDate: string;
-  folderId?: number | null;
+  salePrice?: number;
+  saleDate?: string;
+  profitPercent?: number;
+  profitAmount?: number;
+  daysHeld?: number;
 }
 
-// Item sale input
-export interface SellItemInput {
-  salePrice: number;
-  saleDate: string;
+export interface AboutData {
+  description: string;
+  socialLinks: { label: string; url: string }[];
+}
+
+export interface AppState {
+  transactions: Transaction[];
+  walletBalance: number;
+  categories: string[];
+  about: AboutData | null;
+}
+
+export interface DashboardStats {
+  totalCount: number;
+  avgProfitPercent: number;
+  avgDays: number;
+  bestTransaction: { title: string; profitPercent: number } | null;
+  worstTransaction: { title: string; profitPercent: number } | null;
+  totalProfitAmount: number;
+  totalProfitPercent: number;
+}
+
+export interface HeatmapMonth {
+  month: string;
+  profitSum: number;
+  transactionCount: number;
+}
+
+export interface TransactionInput {
+  title: string;
+  description?: string;
+  category?: string;
+  status: 'Kupiono' | 'Sprzedano';
+  purchasePrice: number;
+  purchaseDate: string;
+  salePrice?: number;
+  saleDate?: string;
+}
+
+export interface ValidationResult {
+  success: boolean;
+  errors: Record<string, string>;
 }
