@@ -1,6 +1,6 @@
 # Finance Tracker
 
-Aplikacja do śledzenia transakcji kupna/sprzedaży z dashboardem statystyk i heatmapą miesięcznych zysków.
+Aplikacja do śledzenia transakcji kupna/sprzedaży z dashboardem statystyk i heatmapą miesięcznych zysków. Ze względu na oszczędność tokenów oraz wczesność projektu, przy tworzeniu powstał jedynie frontend aplikacj, aby nie trzeba było wraz znowymi funkcjionalnościami przerabiać backendu.
 
 ## Funkcje
 
